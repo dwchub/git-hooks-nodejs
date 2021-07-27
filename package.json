@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint src/**",
-    "lint-fix":  "eslint src/** --fix"
+    "lint-fix": "eslint src/** --fix"
   },
   "keywords": [],
   "author": "",
@@ -17,11 +17,18 @@
     "eslint-plugin-import": "^2.23.4",
     "husky": "^4.3.8",
     "jest": "^27.0.6",
+    "lint-staged": "^11.1.1",
     "pre-commit": "^1.2.2"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm test"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "jest --findRelatedTests"
+    ]
   }
 }
